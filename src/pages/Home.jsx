@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 export const Home = () => {
     return(
         <>
-            <h1>Home Page</h1>
-            <p>Home page content goes here...</p>
+            <h1>JSON Placeholder</h1>
+            <p>Welcome to JSON Placeholder's blog.</p>
             <Link to="/posts">Blog Posts</Link>
+            <Link to="/photos">Blog Photos</Link>
         </>
     );
 }

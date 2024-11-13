@@ -1,9 +1,8 @@
 import React, {useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export const Posts = () => {
-
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
@@ -20,6 +19,7 @@ export const Posts = () => {
     return(
         <div className="container">
             <div className="row">
+                <Link to="/" className="text-link">Back</Link>
                 {posts.map((post) => (
                     <div className="col-12 col-md-6 col-lg-4" key={post.id}>
                         <picture>

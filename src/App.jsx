@@ -5,6 +5,7 @@ import './App.css';
 import { Home } from './pages/Home';
 import { Posts } from './pages/Posts';
 import { PostsDetailPage } from './pages/PostsDetailPage';
+import { Photos } from './pages/Photos';
 
 function App() {
 	return (
@@ -12,7 +13,8 @@ function App() {
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/posts" element={<Posts />} />
-				<Route path="posts/:id" element={<PostsDetailPage />} />
+				<Route path="/posts/:id" element={<PostsDetailPage />} />
+				<Route path="/photos" element={<Photos />} />
 			</Routes>
 		</>
 	)

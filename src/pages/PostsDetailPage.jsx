@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 export const PostsDetailPage = () => {
     const { id } = useParams(); // Get the post ID from the URL
@@ -45,6 +46,7 @@ export const PostsDetailPage = () => {
     return (
         <div className="container">
             <div className="row">
+                <Link to="/posts" className="text-link">Back</Link>
                 <div className="col-12">
                     <h1>{post.title}</h1>
                 </div>
