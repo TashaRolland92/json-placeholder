@@ -1,0 +1,12 @@
+.hero{
+
+    &__image{
+        height: 400px;
+        background: url('../assets/images/hero_mobile.webp') no-repeat right/cover;
+
+        @include tablet{
+            height: 500px;
+            background-image: url('../assets/images/hero.webp');
+        }
+    }
+}

@@ -1,0 +1,12 @@
+body{
+	font-size: 10px;
+	box-sizing: border-box;
+	font-family: $body-font;
+    background-color: $light-grey;
+}
+
+p{
+	font-size: 1.6em;
+	color: $dark-grey;
+	line-height: 1.6em;
+}

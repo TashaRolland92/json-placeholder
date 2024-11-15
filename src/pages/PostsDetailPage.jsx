@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 export const PostsDetailPage = () => {
-    const { id } = useParams(); // Get the post ID from the URL
+    const { id: postId } = useParams(); // Get the post ID from the URL
     const [post, setPost] = useState(null);
+    const [photos, setPhotos] = useState([]);
     const [comments, setComments] = useState([]);
     const [loadingPost, setLoadingPost] = useState(true);
     const [loadingComments, setLoadingComments] = useState(true);
 
-    // Fetch the post data
     useEffect(() => {
-        axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`)
+        // Fetch the post data
+        axios.get(`https://jsonplaceholder.typicode.com/posts/${postId}`)
             .then((response) => {
                 const data = response.data;
                 setPost(data);
@@ -22,26 +22,40 @@ export const PostsDetailPage = () => {
                 console.error('Error fetching data: ', error);
                 setLoadingPost(false);
             });
-    }, [id]);
 
-    // Fetch the comments data
-    useEffect(() => {
-    axios.get(`https://jsonplaceholder.typicode.com/comments?postId=${id}`)
-        .then((response) => {
-            const data = response.data;
-            setComments(data);
-            setLoadingComments(false);
-            console.log('comments', data);
-        })
-        .catch((error) => {
-            console.error('Error fetching data: ', error);
-            setLoadingComments(false);
-        });
-    }, [id]);
+        // Fetch the photos for this post' album (using postId as the albumId)
+        axios.get(`https://jsonplaceholder.typicode.com/albums/${postId}/photos?_limit=12`)
+            .then((response) => {
+                const data = response.data;
+                setPhotos(data);
+            })
+            .catch((error) => {
+                console.error('Error fetching data: ', error);
+            });
+
+        // Fetch the comments data
+        axios.get(`https://jsonplaceholder.typicode.com/comments?postId=${postId}`)
+            .then((response) => {
+                const data = response.data;
+                setComments(data);
+                setLoadingComments(false);
+            })
+            .catch((error) => {
+                console.error('Error fetching data: ', error);
+                setLoadingComments(false);
+            });
+    }, [postId]);
 
     if (loadingPost) return <p>Loading...</p>;
 
     if (!post) return <p>Post not found.</p>;
+
+    const extractDimensions = (url) => {
+        // example URL: https://via.placeholder.com/150/92c952
+        const imageUrl = url.split('/')[3]; // 150/92c952
+        const dimensions = imageUrl.split('/')[0]; // 150
+        return dimensions;
+    };
 
     return (
         <div className="container">
@@ -70,6 +84,17 @@ export const PostsDetailPage = () => {
                         ) : (
                             <p>No comments found for this post</p>
                         )}
+                    </div>
+                    <div className="row">
+                        {photos.map((photo) => {
+                            const dimensions = extractDimensions(photo.thumbnailUrl);
+
+                            return(
+                                <div className="col-12 col-lg-4" key={photo.id}>
+                                    <img src={photo.thumbnailUrl} alt={photo.title} width={dimensions} height={dimensions} />
+                                </div>
+                            );
+                        })}
                     </div>
                 </div>
                 <div className="col-12 col-md-3">User ID: {post.userId}</div>

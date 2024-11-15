@@ -1,0 +1,28 @@
+.nav{
+
+    &__menu{
+        margin: 0;
+        padding: 0;
+        display: flex;
+        list-style: none;
+        flex-direction: row;
+        justify-content: space-between;
+
+        a{
+            height: 50px;
+            display: block;
+			font-size: 1.8em;
+            line-height: 48px;
+			font-weight: 500;
+            margin-right: 20px;
+			text-decoration: none;
+			color: $tertiary-color;
+			transition: all ease-in-out .3s;
+
+			&:hover{
+				color: $secondary-color;
+                text-decoration: underline;
+			}
+		}
+    }
+}
