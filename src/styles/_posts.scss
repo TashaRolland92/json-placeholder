@@ -1,0 +1,42 @@
+.post-container{
+    height: 100%;
+    display: flex;
+    background: #EEE;
+    flex-direction: column;
+
+    .content{
+        display: flex;
+        flex-grow: 1;
+        justify-content: space-between;
+        flex-direction: column;
+        padding: 0 20px 20px;
+    }
+
+    .post-excerpt{
+        flex-grow: 1;
+    }
+
+    .post-image{
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .post-cta{
+        font-size: 1.4em;
+        font-weight: 500;
+        text-decoration: none;
+        color: $tertiary-color;
+
+        &:hover{
+            text-decoration: underline;
+            color: darken($tertiary-color, 10%);
+        }
+    }
+}
+
+.comments{
+
+    p{
+        font-size:1.2em;
+    }
+}

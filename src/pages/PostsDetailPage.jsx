@@ -57,48 +57,75 @@ export const PostsDetailPage = () => {
         return dimensions;
     };
 
-    return (
-        <div className="container">
-            <div className="row">
-                <Link to="/posts" className="text-link">Back</Link>
-                <div className="col-12">
-                    <h1>{post.title}</h1>
-                </div>
-                <div className="col-12 col-md-3">Post ID: {post.id}</div>
-                <div className="col-12 col-md-6">
-                    <p>{post.body}</p>
-                    <div className="comments">
-                        <h3>Users Comments</h3>
-                        {loadingComments ? (
-                            <p>Loading comments...</p>
-                        ) : comments.length > 0 ? (
-                            <ul>
-                                {comments.map((comment) => (
-                                    <li key={comment.id}>
-                                        <h4>User: {comment.email}</h4>
-                                        <h5>Comment Name: {comment.name}</h5>
-                                        <p>{comment.body}</p>
-                                    </li>
-                                ))}
-                            </ul>
-                        ) : (
-                            <p>No comments found for this post</p>
-                        )}
-                    </div>
-                    <div className="row">
-                        {photos.map((photo) => {
-                            const dimensions = extractDimensions(photo.thumbnailUrl);
+    const renderPostBody = () => {
+        if(post.body.length < 600) {
+            return (
+                <>
+                    <p>{post.body}. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde error esse vitae minus eum illum doloremque. Quaerat laudantium iste ratione animi dolore harum nisi sint, quam impedit dicta, totam quod.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut iusto culpa cum ducimus aspernatur? Quod, perferendis molestiae repellendus, expedita hic quasi mollitia, dolor autem repudiandae magnam aliquam unde modi fuga?</p>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Provident doloremque, exercitationem error quia molestias maxime. Dolore repellat iusto ex ipsum laborum magni deserunt dignissimos? Minus fugiat sint sit obcaecati nemo!</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore provident rem quam, labore eaque voluptate saepe dolorem nemo dolorum nulla delectus laboriosam et praesentium porro obcaecati in eligendi. Officiis, optio.</p>
+                </>
+            );
+        } else {
+            return <p>{post.body} ddd</p>;
+        }
+    };
 
-                            return(
-                                <div className="col-12 col-lg-4" key={photo.id}>
-                                    <img src={photo.thumbnailUrl} alt={photo.title} width={dimensions} height={dimensions} />
-                                </div>
-                            );
-                        })}
+    return (
+        <>
+            <div className="container">
+                <div className="row">
+                    <div className="col-12">
+                        <Link to="/posts" className="cta">Back</Link>
+                    </div>
+                    <div className="col-12">
+                        <div className="mini-hero"></div>
+                        <hr />
                     </div>
                 </div>
-                <div className="col-12 col-md-3">User ID: {post.userId}</div>
             </div>
-        </div>
+            <div className="container">
+                <div className="row">
+                    <div className="col-12 col-md-3">
+                        <div className="comments">
+                            <h3>Users Comments</h3>
+                            {loadingComments ? (
+                                <p>Loading comments...</p>
+                            ) : comments.length > 0 ? (
+                                <ul className="list-unstyled">
+                                    {comments.map((comment) => (
+                                        <li key={comment.id}>
+                                            <h4>User: {comment.email}</h4>
+                                            <h5>Comment Name: {comment.name}</h5>
+                                            <p>{comment.body}</p>
+                                        </li>
+                                    ))}
+                                </ul>
+                            ) : (
+                                <p>No comments found for this post</p>
+                            )}
+                        </div>
+                    </div>
+                    <div className="col-12 col-md-7">
+                        <h1>{post.title}</h1>
+                        <p class="post-excerpt">{renderPostBody()}</p>
+                    </div>
+                    <div className="col-12 col-md-2">
+                        <div className="row">
+                            <h3>Related Images</h3>
+                            {photos.map((photo) => {
+                                const dimensions = extractDimensions(photo.thumbnailUrl);
+                                return(
+                                    <div className="col-12" key={photo.id}>
+                                        <img src={photo.thumbnailUrl} alt={photo.title} width={dimensions} height={dimensions} className="post-image" />
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
     );
 }

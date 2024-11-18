@@ -2,11 +2,71 @@ body{
 	font-size: 10px;
 	box-sizing: border-box;
 	font-family: $body-font;
-    background-color: $light-grey;
+}
+
+hr{
+	opacity: 1;
+	color: $primary-color;
+}
+
+h1{
+	margin: 20px 0;
+	font-size: 4em;
+	color: $primary-color;
+	white-space: break-spaces;
+	font-family: $header-font;
+	text-transform: capitalize;
+}
+
+h2{
+	font-size: 2.2em;
+	margin: 20px 0 10px;
+	color: $secondary-color;
+	font-family: $header-font;
+	text-transform: capitalize;
+}
+
+h3{
+	font-size: 2em;
+	margin: 0 0 20px;
+	color: $secondary-color;
+	font-family: $header-font;
+	text-decoration: underline;
+}
+
+h4{
+	font-size: 1.6em;
+	margin: 0 0 10px;
+	color: $tertiary-color;
+	font-family: $header-font;
+}
+
+h5{
+	font-size: 1.4em;
+	margin: 0 0 10px;
+	color: $quaternary-color;
+	font-family: $header-font;
 }
 
 p{
-	font-size: 1.6em;
+	font-size: 1.4em;
 	color: $dark-grey;
 	line-height: 1.6em;
+}
+
+a{
+	transition: color ease-in-out .3s;
+}
+
+.cta{
+	margin: 10px 0;
+	font-size: 1.2em;
+	display: inline-block;
+	text-decoration: none;
+	color: $secondary-color;
+
+	&:hover{
+		text-decoration: underline;
+		color: darken($highlight-color, 10%);
+	}
 }
