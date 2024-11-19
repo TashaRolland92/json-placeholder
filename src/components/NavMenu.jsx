@@ -9,7 +9,7 @@ export const NavMenu = () => {
                     <Link to="/posts" className="nav__link">Blog Posts</Link>
                 </li>
                 <li className="nav__item">
-                    <Link to="/">Todos</Link>
+                    <Link to="/todos">Todos</Link>
                 </li>
             </ul>
         </nav>

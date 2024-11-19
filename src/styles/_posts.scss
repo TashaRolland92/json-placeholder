@@ -5,20 +5,15 @@
     flex-direction: column;
 
     .content{
-        display: flex;
         flex-grow: 1;
-        justify-content: space-between;
-        flex-direction: column;
+        display: flex;
         padding: 0 20px 20px;
+        flex-direction: column;
+        justify-content: space-between;
     }
 
     .post-excerpt{
         flex-grow: 1;
-    }
-
-    .post-image{
-        width: 100%;
-        object-fit: cover;
     }
 
     .post-cta{
@@ -32,6 +27,11 @@
             color: darken($tertiary-color, 10%);
         }
     }
+}
+
+.post-image{
+    width: 100%;
+    object-fit: cover;
 }
 
 .comments{

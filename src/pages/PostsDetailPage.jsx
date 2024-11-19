@@ -68,7 +68,7 @@ export const PostsDetailPage = () => {
                 </>
             );
         } else {
-            return <p>{post.body} ddd</p>;
+            return <p>{post.body}</p>;
         }
     };
 
@@ -97,8 +97,8 @@ export const PostsDetailPage = () => {
                                     {comments.map((comment) => (
                                         <li key={comment.id}>
                                             <h4>User: {comment.email}</h4>
-                                            <h5>Comment Name: {comment.name}</h5>
-                                            <p>{comment.body}</p>
+                                            <h5>Title: {comment.name}</h5>
+                                            <p>{comment.body}.</p>
                                         </li>
                                     ))}
                                 </ul>

@@ -1,0 +1,23 @@
+.primary-btn{
+    height: 30px;
+    font-size: 1.2em;
+    min-width: 60px;
+    color: $dark-grey;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    background-color: transparent;
+    border: 2px solid $tertiary-color;
+
+    &.delete{
+        border-color: $error-color;
+
+        &:hover{
+            background-color: $error-color;
+        }
+    }
+
+    &:hover{
+        color: #FFF;
+        background-color: $tertiary-color;
+    }
+}

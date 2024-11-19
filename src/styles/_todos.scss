@@ -1,0 +1,93 @@
+.todo-list{
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #EEE;
+
+    .todo-item{
+        display: flex;
+        padding: 10px;
+        border-radius: 4px;
+        margin-bottom: 10px;
+        align-items: center;
+        background-color: #FFF;
+
+        .todo-excerpt{
+            color: #817e7e;
+            font-size: 1.2em;
+        }
+    }
+}
+
+.name-container{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    h2{
+        font-size: 1.6em;
+        margin-bottom: 5px;
+
+        @include tablet{
+            font-size: 2.2em;
+        }
+    }
+}
+
+.checkbox-container{
+    min-width: 60px;
+    display: flex;
+    cursor: pointer;
+    position: relative;
+    align-items: center;
+
+    .checkbox{
+        width: 0;
+        height: 0;
+        opacity: 0;
+        cursor: pointer;
+        position: absolute;
+
+        &:checked ~ .checkmark{
+            background: $highlight-color;
+
+            &:hover{
+                background: darken($highlight-color, 10%);
+            }
+
+            &::after{
+                display: block;
+            }
+        }
+    }
+
+    .checkmark{
+        width: 25px;
+        height: 25px;
+        position: absolute;
+        border-radius: 50%;
+        background: $tertiary-color;
+    }
+
+    &:hover{
+
+        .checkbox ~ .checkmark{
+            background: darken($tertiary-color, 10%);
+        }
+    }
+}
+
+.checkmark{
+    &::after{
+        content:"";
+        display: none;
+        position: absolute;
+        left: 9px;
+        top: 4px;
+        width: 8px;
+        height: 15px;
+        border: solid #FFF;
+        transform: rotate(45deg);
+        border-width: 0 3px 3px 0;
+    }
+}
