@@ -1,7 +1,9 @@
+@use "sass:color";
+
 .todo-list{
     padding: 10px;
     border-radius: 4px;
-    background-color: #EEE;
+    background-color: $lighter-grey;
 
     .todo-item{
         display: flex;
@@ -52,7 +54,7 @@
             background: $highlight-color;
 
             &:hover{
-                background: darken($highlight-color, 10%);
+                background: color.adjust($highlight-color, $lightness: -10%);
             }
 
             &::after{
@@ -72,7 +74,7 @@
     &:hover{
 
         .checkbox ~ .checkmark{
-            background: darken($tertiary-color, 10%);
+            background: color.adjust($tertiary-color, $lightness: -10%);
         }
     }
 }

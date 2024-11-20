@@ -1,0 +1,26 @@
+.accordion-btn{
+    min-width: 80px;
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    border-radius: 4px;
+    transition: max-height 0.3s ease;
+
+    form{
+        display: none;
+        padding: 20px;
+    }
+}
+
+.accordion-content.active {
+    padding: 0;
+    max-height: 200px;
+    margin-bottom: 30px;
+    background-color: $lighter-grey;
+
+    form{
+        display: block;
+    }
+}

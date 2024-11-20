@@ -20,4 +20,8 @@
         color: #FFF;
         background-color: $tertiary-color;
     }
+
+    &:focus{
+        outline: none;
+    }
 }

@@ -1,8 +1,10 @@
+@use "sass:color";
+
 .post-container{
     height: 100%;
     display: flex;
-    background: #EEE;
     flex-direction: column;
+    background: $lighter-grey;
 
     .content{
         flex-grow: 1;
@@ -24,7 +26,7 @@
 
         &:hover{
             text-decoration: underline;
-            color: darken($tertiary-color, 10%);
+            color: color.adjust($tertiary-color, $lightness: -10%);
         }
     }
 }
